@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F6a" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DriverResult" representedClassName="DriverResult" syncable="YES">
+        <attribute name="points" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="position" attributeType="String" syncable="YES"/>
+        <attribute name="raceCountry" attributeType="String" syncable="YES"/>
+        <attribute name="raceName" attributeType="String" syncable="YES"/>
+        <attribute name="raceRound" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavoriteDriver" inverseName="results" inverseEntity="FavoriteDriver" syncable="YES"/>
+    </entity>
+    <entity name="FavoriteDriver" representedClassName="FavoriteDriver" syncable="YES">
+        <attribute name="firstName" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" attributeType="String" syncable="YES"/>
+        <attribute name="nationality" attributeType="String" syncable="YES"/>
+        <attribute name="urlString" attributeType="String" syncable="YES"/>
+        <relationship name="results" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DriverResult" inverseName="driver" inverseEntity="DriverResult" syncable="YES"/>
+    </entity>
+    <entity name="Schedule" representedClassName="Schedule" syncable="YES">
+        <attribute name="circuitId" attributeType="String" syncable="YES"/>
+        <attribute name="circuitName" attributeType="String" syncable="YES"/>
+        <attribute name="country" attributeType="String" syncable="YES"/>
+        <attribute name="dateString" attributeType="String" syncable="YES"/>
+        <attribute name="locality" attributeType="String" syncable="YES"/>
+        <attribute name="raceName" attributeType="String" syncable="YES"/>
+        <attribute name="round" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DriverResult" positionX="-54" positionY="-9" width="128" height="165"/>
+        <element name="FavoriteDriver" positionX="-333" positionY="-207" width="128" height="135"/>
+        <element name="Schedule" positionX="-74" positionY="-196" width="128" height="150"/>
+    </elements>
+</model>
