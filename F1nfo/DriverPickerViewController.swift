@@ -128,7 +128,7 @@ class DriverPickerViewController: UIViewController, UITableViewDataSource, UITab
             } else {
                 self.activityIndicator.stopAnimating()
                 
-                //Alert view to inform user of error: failed to get data
+                // Alert view to inform user of error: failed to get data
                 let alert = UIAlertController(title: "Could not complete request", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
                 let dismissAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil)
                 alert.addAction(dismissAction)

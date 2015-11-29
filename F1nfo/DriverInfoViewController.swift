@@ -36,7 +36,7 @@ class DriverInfoViewController: UIViewController, UIWebViewDelegate {
     
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         activityIndicator.stopAnimating()
-        //Alert view to inform user of error: failed to load page
+        // Alert view to inform user of error: failed to load page
         let alert = UIAlertController(title: "Could not complete request", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
         let dismissAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil)
         alert.addAction(dismissAction)

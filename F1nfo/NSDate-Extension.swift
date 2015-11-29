@@ -8,8 +8,7 @@
 
 import Foundation
 
-extension NSDate
-{
+extension NSDate {
     convenience init(dateString:String) {
         let dateStringFormatter = NSDateFormatter()
         dateStringFormatter.dateFormat = "yyyy-MM-dd"

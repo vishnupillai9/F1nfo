@@ -27,6 +27,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         do {
             try fetchedResultsController.performFetch()
         } catch _ {
+            print("Error in performing fetch")
         }
         
         if fetchedResultsController.fetchedObjects!.isEmpty {
@@ -152,7 +153,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             } else {
                 self.activityIndicator.stopAnimating()
                 
-                //Alert view to inform user of error: failed to get data
+                // Alert view to inform user of error: failed to get data
                 let alert = UIAlertController(title: "Could not complete request", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
                 let dismissAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil)
                 alert.addAction(dismissAction)

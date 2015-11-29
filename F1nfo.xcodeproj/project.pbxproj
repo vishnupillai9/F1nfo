@@ -25,6 +25,7 @@
 		279E456A1AFE4D2B001AD98D /* DriverInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279E45691AFE4D2B001AD98D /* DriverInfoViewController.swift */; };
 		27BB569F1AFD17DE00963C1F /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BB569E1AFD17DE00963C1F /* ResultTableViewCell.swift */; };
 		27D283661AFA8FDD00841FE5 /* DriverResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D283651AFA8FDD00841FE5 /* DriverResultsViewController.swift */; };
+		27DC2BB81C0010370038B2C9 /* QuickActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DC2BB71C0010370038B2C9 /* QuickActions.swift */; };
 		27ED764C1AF912EB003BD655 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED764B1AF912EB003BD655 /* AppDelegate.swift */; };
 		27ED764E1AF912EB003BD655 /* FavoriteDriversViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED764D1AF912EB003BD655 /* FavoriteDriversViewController.swift */; };
 		27ED76511AF912EB003BD655 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27ED764F1AF912EB003BD655 /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		279E45691AFE4D2B001AD98D /* DriverInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverInfoViewController.swift; sourceTree = "<group>"; };
 		27BB569E1AFD17DE00963C1F /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		27D283651AFA8FDD00841FE5 /* DriverResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DriverResultsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		27DC2BB71C0010370038B2C9 /* QuickActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActions.swift; sourceTree = "<group>"; };
 		27ED76461AF912EB003BD655 /* F1nfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F1nfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED764A1AF912EB003BD655 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27ED764B1AF912EB003BD655 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -168,6 +170,7 @@
 				27D2F2621B1B76CA00078E9B /* Model */,
 				27D2F2611B1B769400078E9B /* View */,
 				27D2F2601B1B765300078E9B /* Controller */,
+				27DC2BB71C0010370038B2C9 /* QuickActions.swift */,
 				27ED764B1AF912EB003BD655 /* AppDelegate.swift */,
 				27ED764F1AF912EB003BD655 /* Main.storyboard */,
 				27ED76521AF912EB003BD655 /* Images.xcassets */,
@@ -253,7 +256,6 @@
 				TargetAttributes = {
 					27ED76451AF912EB003BD655 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 3PR5JZZ4QM;
 					};
 					27ED765A1AF912EB003BD655 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -311,6 +313,7 @@
 				27ED76701AF9156D003BD655 /* FavoriteDriver.swift in Sources */,
 				27472BB11B038104008FADDE /* StandingsViewController.swift in Sources */,
 				27151B4A1AFF230F003FDFFA /* Model.xcdatamodeld in Sources */,
+				27DC2BB81C0010370038B2C9 /* QuickActions.swift in Sources */,
 				27472BB51B039978008FADDE /* StandingsTableViewCell.swift in Sources */,
 				273444581B05DDA5009A9EAB /* Schedule.swift in Sources */,
 				273444561B05D29F009A9EAB /* ScheduleTableViewCell.swift in Sources */,
@@ -384,6 +387,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -431,6 +435,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -456,6 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = F1nfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -471,6 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = F1nfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -49,4 +49,5 @@ class FavoriteDriver: NSManagedObject {
             return NSURL(string: urlString)
         }
     }
+    
 }

@@ -33,6 +33,7 @@ class DriverResultsViewController: UIViewController, UITableViewDataSource, UITa
         do {
             try fetchedResultsController.performFetch()
         } catch _ {
+            print("Error in performing fetch")
         }
         fetchedResultsController.delegate = self
     }
@@ -109,6 +110,18 @@ class DriverResultsViewController: UIViewController, UITableViewDataSource, UITa
         tableView.endUpdates()
     }
     
+    // MARK: - Preview Actions
+    
+    @available(iOS 9.0, *)
+    override func previewActionItems() -> [UIPreviewActionItem] {
+        let deleteAction = UIPreviewAction(title: "Delete", style: .Destructive) { (action, controller) -> Void in
+            self.sharedContext.deleteObject(self.driver)
+            CoreDataStackManager.sharedInstance().saveContext()
+        }
+        
+        return [deleteAction]
+    }
+    
     // MARK: - Configure Cell
     
     func configureCell(cell: ResultTableViewCell, withResult result: DriverResult) {
@@ -157,7 +170,7 @@ class DriverResultsViewController: UIViewController, UITableViewDataSource, UITa
             } else {
                 self.activityIndicator.stopAnimating()
                 
-                //Alert view to inform user of error: failed to get data
+                // Alert view to inform user of error: failed to get data
                 let alert = UIAlertController(title: "Could not complete request", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
                 let dismissAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil)
                 alert.addAction(dismissAction)

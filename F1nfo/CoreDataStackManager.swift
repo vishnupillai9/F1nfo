@@ -12,7 +12,7 @@ private let SQLITE_FILE_NAME = "F1nfo.sqlite"
 
 class CoreDataStackManager {
     
-    //MARK: - Shared Instance
+    // MARK: - Shared Instance
     
     class func sharedInstance() -> CoreDataStackManager {
         struct Static {
@@ -21,7 +21,7 @@ class CoreDataStackManager {
         return Static.instance
     }
     
-    //MARK: - Core Data stack
+    // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
@@ -71,7 +71,7 @@ class CoreDataStackManager {
         return managedObjectContext
     }()
     
-    //MARK: - Core Data saving support
+    // MARK: - Core Data saving support
     
     func saveContext () {
         if let context = self.managedObjectContext {

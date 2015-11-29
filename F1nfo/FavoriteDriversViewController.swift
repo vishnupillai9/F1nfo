@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import SafariServices
 
-class FavoriteDriversViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DriverPickerViewControllerDelegate, NSFetchedResultsControllerDelegate {
+class FavoriteDriversViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DriverPickerViewControllerDelegate, NSFetchedResultsControllerDelegate, UIViewControllerPreviewingDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,8 +22,15 @@ class FavoriteDriversViewController: UIViewController, UITableViewDataSource, UI
         do {
             try fetchedResultsController.performFetch()
         } catch _ {
+            print("Error in performing fetch")
         }
         fetchedResultsController.delegate = self
+        
+        if #available(iOS 9.0, *) {
+            if traitCollection.forceTouchCapability == .Available {
+                registerForPreviewingWithDelegate(self, sourceView: view)
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -89,12 +97,16 @@ class FavoriteDriversViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         let driver = fetchedResultsController.objectAtIndexPath(indexPath) as! FavoriteDriver
         
-        let controller = storyboard!.instantiateViewControllerWithIdentifier("DriverInfoViewController") as! DriverInfoViewController
-        
-        controller.url = driver.url
-        navigationItem.title = driver.firstName + " " + driver.lastName
-        
-        navigationController?.pushViewController(controller, animated: true)
+        if #available(iOS 9.0, *) {
+            presentSafariViewController(driver.url)
+        } else {
+            let controller = storyboard!.instantiateViewControllerWithIdentifier("DriverInfoViewController") as! DriverInfoViewController
+            
+            controller.url = driver.url
+            navigationItem.title = driver.firstName + " " + driver.lastName
+            
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -163,6 +175,30 @@ class FavoriteDriversViewController: UIViewController, UITableViewDataSource, UI
         cell.tintColor = Client.Colors.CustomGray
     }
     
+    // MARK: - View Controller Previewing Delegate
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        let cellPosition = tableView.convertPoint(location, fromView: view)
+        
+        guard let indexPath = tableView.indexPathForRowAtPoint(cellPosition) else { return nil }
+        guard let cell = tableView.cellForRowAtIndexPath(indexPath) else { return nil }
+        
+        let driver = fetchedResultsController.objectAtIndexPath(indexPath) as! FavoriteDriver
+        
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("DriverResultsViewController") as! DriverResultsViewController
+        controller.driver = driver
+        
+        if #available(iOS 9.0, *) {
+            previewingContext.sourceRect = view.convertRect(cell.frame, fromCoordinateSpace: tableView)
+        }
+        
+        return controller
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+        showViewController(viewControllerToCommit, sender: self)
+    }
+    
     // MARK: - Actions
     
     @IBAction func addDriver() {
@@ -171,6 +207,16 @@ class FavoriteDriversViewController: UIViewController, UITableViewDataSource, UI
         controller.delegate = self
         
         presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    // MARK: - Helpers
+    
+    @available(iOS 9.0, *)
+    func presentSafariViewController(url: NSURL?) {
+        guard let url = url else { print("Invalid URL"); return; }
+        
+        let svc = SFSafariViewController(URL: url)
+        presentViewController(svc, animated: true, completion: nil)
     }
     
 }
